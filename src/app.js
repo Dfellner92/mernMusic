@@ -1,7 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
-import { connect } from './backend/src/config/db';
-import {restRouter} from './backend/src/api';
+import { connect } from './config/db';
+import {restRouter} from './api';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
