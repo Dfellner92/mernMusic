@@ -7,6 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 connect();
+// middlewares from express api
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 app.use(logger('dev'));
 
 app.use('/api', restRouter);
@@ -29,3 +33,4 @@ app.use((error, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running at PORT http://localhost:${PORT}`);
 });
+
