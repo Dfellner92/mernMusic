@@ -73,6 +73,31 @@
           }
         }
       }
+    },
+    "/songs/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": "true",
+          "description": "id of the song",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Songs"],
+        "summary": "API Endpoint to find a single Song",
+        "description": "Find a song in the database",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Song has been found",
+            "schema": {
+              "$ref": "#definitions/Song"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
