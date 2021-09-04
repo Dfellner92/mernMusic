@@ -1,0 +1,41 @@
+{
+  "swagger": "2.0",
+  "title": "Mern Music",
+  "description": "Mern music API creation",
+  "license": {
+    "name": "MIT",
+    "url": "https://opensource.org/licenses/MIT"
+  },
+  "version": "1.0.0",
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Songs",
+      "description": "API for Songs Endpoints"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "definitions": {
+    "Song": {
+      "required": ["title", "url"],
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "rating": {
+            "type": "integer",
+            "format": "Int32"
+        }
+      }
+    }
+  }
+}
