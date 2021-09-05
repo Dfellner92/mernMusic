@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { fetchSongsActions } from '../../actions/songsActions';
+import Spinner from '../spinner/Spinner';
+import Button from '../Button';
 
 const Songs = () => {
 
@@ -10,10 +12,19 @@ const Songs = () => {
         dispatch(fetchSongsActions())
     }, [dispatch])
 
-    
+    const loading = useSelector(state => state.songs.loading);
+    const songs = useSelector(state => state.songs.songs);
+    const error = useSelector(state => state.songs.error);
 
     return (
-        <div>
+        <>
+        {error ? (
+            <div className="font-wight-bold alert alert-danger text-center mt-5">
+                Something went wrong
+            </div>
+        ) : null}
+        {loading ? <Spinner /> : null}
+        <div style={{margin: '10px'}}>
           <h2 className="text-center">Songs</h2>  
         
           <table className="table table-striped .table-hover shadow text-center">
@@ -26,18 +37,21 @@ const Songs = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Faded by Alan Walker</td>
-                <td>https://www.youtube.com</td>
-                <td>5</td>
-                <td>
-                    <button className="btn btn-info">Edit</button>
-                    <button className="btn btn-info">Delete</button>
-                </td>
-              </tr>
+              {songs.map(song => (
+                  <tr>
+                      <td>{song.title}</td>
+                      <td>{song.url}</td>
+                      <td>{song.rating}</td>
+                      <td>
+                          <button>Edit</button>
+                          <button>Delete</button>
+                      </td>
+                  </tr>
+              ))}
             </tbody>
           </table>
         </div>
+        </>
     );
 }
 
