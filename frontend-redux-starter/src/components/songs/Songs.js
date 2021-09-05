@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { fetchSongsActions } from '../../actions/songsActions';
 import Spinner from '../spinner/Spinner';
-import Button from '../Button';
+import Song from './Song';
 
 const Songs = () => {
 
@@ -37,17 +37,9 @@ const Songs = () => {
               </tr>
             </thead>
             <tbody>
-              {songs.map(song => (
-                  <tr>
-                      <td>{song.title}</td>
-                      <td>{song.url}</td>
-                      <td>{song.rating}</td>
-                      <td>
-                          <button>Edit</button>
-                          <button>Delete</button>
-                      </td>
-                  </tr>
-              ))}
+                {songs.map(song => (
+                    <Song key={song.id} song={song} />
+                ))}
             </tbody>
           </table>
         </div>
