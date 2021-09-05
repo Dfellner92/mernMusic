@@ -1,7 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { deleteSongActions } from '../../actions/songsActions';
 
 const Song = ({ song }) => {
+    const dispatch = useDispatch();
     return (
         <tr>
             <td>{song.title}</td>
@@ -12,7 +15,8 @@ const Song = ({ song }) => {
                     Edit
                 </Link>
 
-                <button className="btn btn-outline-danger ml-2">
+                <button className="btn btn-outline-danger ml-2"
+                onClick={() => dispatch(deleteSongActions(song.id))}>
                     Delete
                 </button>
             </td>

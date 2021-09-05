@@ -27,12 +27,6 @@
   ],
   "songs": [
     {
-      "title": "Hey Jude by The Beatles ",
-      "url": "https://www.imdb.com/title/tt0043014/",
-      "rating": "4",
-      "id": 4
-    },
-    {
       "title": "Master of Puppets by Metallica",
       "url": "https://youtu.be/Q9uat3ticA8",
       "rating": "5",
