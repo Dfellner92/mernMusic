@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch} from 'react-redux';
+import { fetchSongsActions } from '../../actions/songsActions';
 
 const Songs = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchSongsActions())
+    }, [dispatch])
+
+    
+
     return (
         <div>
           <h2 className="text-center">Songs</h2>  
