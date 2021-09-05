@@ -21,7 +21,7 @@ const Header = () => {
             className="btn btn-info rounded-pill nuevo-post d-block "
           />
           <Button
-            descrip="Moveis"
+            descrip="Movies"
             link="/movies"
             className="btn btn-info rounded-pill nuevo-post d-block  ml-2 px-4"
           />

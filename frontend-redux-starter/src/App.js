@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Movies from './components/movies/Movies';
 import MovieForm from './components/movies/MovieForm';
+import Songs from './components/songs/Songs';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/movies" component={Movies} />
             <Route exact path="/movies/edit/:id" component={MovieForm} />
             <Route exact path="/movies/new" component={MovieForm} />
+            <Route exact path="/songs" component={Songs}/>
           </Switch>
         </div>
       </Provider>
