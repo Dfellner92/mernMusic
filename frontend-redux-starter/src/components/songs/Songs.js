@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
 import { fetchSongsActions } from '../../actions/songsActions';
 import Spinner from '../spinner/Spinner';
@@ -25,6 +26,9 @@ const Songs = () => {
         ) : null}
         {loading ? <Spinner /> : null}
         <div style={{margin: '10px'}}>
+          <Link className="btn btn-info" to="/songs/new">
+            Add Movie
+          </Link>
           <h2 className="text-center">Songs</h2>  
         
           <table className="table table-striped .table-hover shadow text-center">
