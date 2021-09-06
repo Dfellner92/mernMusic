@@ -10,7 +10,10 @@ import { FETCH_SONGS_ERROR,
     ADD_SONG_SUCCESS,
     GET_SONG_START,
     GET_SONG_ERROR,
-    GET_SONG_SUCCESS } from "../types"
+    GET_SONG_SUCCESS,
+    EDIT_SONG_START,
+    EDIT_SONG_ERROR,
+    EDIT_SONG_SUCCESS } from "../types"
 
 
 export const fetchSongsStart = () => {
@@ -149,6 +152,41 @@ export const getSongActions = (id) => {
             .catch(err => {
                 console.log(err);
                 dispatch(deleteSongError());
+            })
+    };
+};
+
+export const editSongStart = () => {
+    return {
+        type: EDIT_SONG_START,
+    };
+};
+
+export const editSongError = () => {
+    return {
+        type: EDIT_SONG_ERROR,
+    };
+};
+
+export const editSongSuccess = (song) => {
+    return {
+        type: EDIT_SONG_SUCCESS,
+        payload: song,
+    };
+};
+
+export const editSongActions = (song) => {
+    return dispatch => {
+        dispatch(editSongStart());
+        clienteAxios.put(`/songs/${song.id}`, song)
+            .then(res => {
+                console.log(res);
+                dispatch(editSongSuccess(res.data));
+
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch(editSongError());
             })
     };
 };

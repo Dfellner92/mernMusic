@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { addSongActions, getSongActions } from '../../actions/songsActions';
+import { addSongActions, getSongActions, editSongActions } from '../../actions/songsActions';
 
 const SongForm = ({history, match}) => {
     const {handleSubmit, errors, register} = useForm();
     const dispatch = useDispatch();
+    const song = useSelector(state => state.songs.songs);
+    const [title, setTitle] = useState('New Song');
+
     const submitForm = (data) => {
         if (match.params.id) {
-            console.log(match);
+            dispatch(editSongActions({id: +match.params.id, ...data}))
+            history.push('/songs')
         } else {
             dispatch(addSongActions(data));
             history.push('/songs');
@@ -18,6 +22,8 @@ const SongForm = ({history, match}) => {
 
     useEffect(() => {
         if (match.params.id) {
+            setTitle('Edit Song');
+
             dispatch(getSongActions(+match.params.id));
         }
     }, [dispatch, match.params.id])
@@ -25,7 +31,7 @@ const SongForm = ({history, match}) => {
     <div className="col-md-8">
       <div className="card">
         <div className="card-body">
-          <h2 className="text-center mb-4 font-weight-bold ">New Song</h2>
+          <h2 className="text-center mb-4 font-weight-bold ">{title}</h2>
           <form onSubmit={handleSubmit(submitForm)}>
             <div className="form-group">
               <label>Title</label>
@@ -35,6 +41,7 @@ const SongForm = ({history, match}) => {
                 placeholder="Song Title"
                 name="title"
                 ref={register({required: true})}
+                defaultValue={song.title}
               />
               {errors.title && (
                   <div className="font-weight-bold alert alert-danger text-center mt-4">
@@ -50,6 +57,7 @@ const SongForm = ({history, match}) => {
                 placeholder="Song URL"
                 name="url"
                 ref={register({register: true})}
+                defaultValue={song.url}
               />
               {errors.url && (
                 <div className="font-weight-bold alert alert-danger text-center mt-4">
@@ -65,6 +73,7 @@ const SongForm = ({history, match}) => {
                 placeholder="Song Rating"
                 name="rating"
                 ref={register({register: true})}
+                defaultValue={song.rating}
               />
               {errors.rating && (
                   <div className="font-weight-bold alert alert-danger text-center mt-4">

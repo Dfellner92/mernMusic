@@ -27,10 +27,10 @@
   ],
   "songs": [
     {
-      "title": "Forget You by Cee lo Green",
+      "id": 7,
+      "title": "Forget You by Cee lo Greene",
       "url": "https://www.imdb.com/title/tt0033467/",
-      "rating": 0,
-      "id": 7
+      "rating": "0"
     },
     {
       "title": "Heaven by Avicii",
