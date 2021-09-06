@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
-import { addSongActions } from '../../actions/songsActions';
+import { addSongActions, getSongActions } from '../../actions/songsActions';
 
 const SongForm = ({history, match}) => {
     const {handleSubmit, errors, register} = useForm();
@@ -15,6 +15,12 @@ const SongForm = ({history, match}) => {
             history.push('/songs');
         }   
     }
+
+    useEffect(() => {
+        if (match.params.id) {
+            dispatch(getSongActions(+match.params.id));
+        }
+    }, [dispatch, match.params.id])
     return <div className="row justify-content-center mt-5">
     <div className="col-md-8">
       <div className="card">

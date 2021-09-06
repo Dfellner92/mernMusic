@@ -37,3 +37,7 @@ export const DELETE_SONG_ERROR = 'DELETE_SONG_ERROR';
 export const ADD_SONG_START = 'ADD_SONG';
 export const ADD_SONG_SUCCESS = 'ADD_SONG_SUCCESS';
 export const ADD_SONG_ERROR = 'ADD_SONG_ERROR';
+
+export const GET_SONG_START = 'GET_SONG_START';
+export const GET_SONG_SUCCESS = 'GET_SONG_SUCCESS';
+export const GET_SONG_ERROR = 'GET_SONG_ERROR';
