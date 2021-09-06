@@ -1,11 +1,12 @@
 import express from "express";
 import logger from "morgan";
 import SwaggerUi from "swagger-ui-express";
-import cors from 'cors';
+import cors from "cors";
 
 import { connect } from "./config/db";
 import { restRouter } from "./api";
-import swaggerDocument from './config/swagger.json';
+import swaggerDocument from "./config/swagger.json";
+import { Server } from "http";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -40,6 +41,12 @@ app.use((error, req, res, next) => {
       message: error.message,
     },
   });
+});
+
+// trying
+app.use(express.static(path.join(__dirname, "../build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build"));
 });
 
 app.listen(PORT, () => {
