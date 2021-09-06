@@ -12,7 +12,7 @@ const SongForm = ({history, match}) => {
 
     const submitForm = (data) => {
         if (match.params.id) {
-            dispatch(editSongActions({id: +match.params.id, ...data}))
+            dispatch(editSongActions({_id: match.params.id, ...data}))
             history.push('/songs')
         } else {
             dispatch(addSongActions(data));
@@ -24,7 +24,7 @@ const SongForm = ({history, match}) => {
         if (match.params.id) {
             setTitle('Edit Song');
 
-            dispatch(getSongActions(+match.params.id));
+            dispatch(getSongActions(match.params.id));
         }
     }, [dispatch, match.params.id])
     return <div className="row justify-content-center mt-5">

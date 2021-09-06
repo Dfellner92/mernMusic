@@ -60,7 +60,7 @@ const songsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: false,
-                songs: state.songs.filter(s => s.id !== action.payload),
+                songs: state.songs.filter(s => s._id !== action.payload),
             }
         case ADD_SONG_START:
             return {
@@ -109,7 +109,7 @@ const songsReducer = (state = initialState, action) => {
                 ...state,
                 error: false,
                 songs: state.songs.map(song =>
-                    song.id === action.payload.id ? (song = action.payload) : song),
+                    song._id === action.payload._id ? (song = action.payload) : song),
             }
         default: 
             return state;

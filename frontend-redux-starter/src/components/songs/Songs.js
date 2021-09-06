@@ -27,7 +27,7 @@ const Songs = () => {
         {loading ? <Spinner /> : null}
         <div style={{margin: '10px'}}>
           <Link className="btn btn-info" to="/songs/new">
-            Add Movie
+            Add Song
           </Link>
           <h2 className="text-center">Songs</h2>  
         
