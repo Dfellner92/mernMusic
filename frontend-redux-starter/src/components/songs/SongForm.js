@@ -1,11 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 
-const SongForm = () => {
+import { addSongActions } from '../../actions/songsActions';
+
+const SongForm = ({history, match}) => {
     const {handleSubmit, errors, register} = useForm();
-
+    const dispatch = useDispatch();
     const submitForm = (data) => {
-        console.log(data);
+        if (match.params.id) {
+            console.log(match);
+        } else {
+            dispatch(addSongActions(data));
+            history.push('/songs');
+        }   
     }
     return <div className="row justify-content-center mt-5">
     <div className="col-md-8">

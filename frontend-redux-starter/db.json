@@ -37,6 +37,24 @@
       "url": "https://www.imdb.com/title/tt1392190/",
       "rating": "5",
       "id": 8
+    },
+    {
+      "title": "harry potter",
+      "url": "https://desolate-gorge-03146.herokuapp.com/",
+      "rating": "2",
+      "id": 9
+    },
+    {
+      "title": "Frankenstein",
+      "url": "https://desolate-gorge-03146.herokuapp.com/",
+      "rating": "3",
+      "id": 10
+    },
+    {
+      "title": "1",
+      "url": "https://github.com/Dfellner92/nosqlWorkoutTracker",
+      "rating": "2",
+      "id": 11
     }
   ]
 }
